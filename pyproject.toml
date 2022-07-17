@@ -12,6 +12,9 @@ SQLAlchemy = "^1.4.39"
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
 
+[tool.poetry.scripts]
+bibliognost = "bibliognost.cli:main"
+
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
