@@ -6,6 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy import select
 from sqlalchemy.orm import sessionmaker
 
+from bibliognost import tui
 from bibliognost.persistence import Collection, Work
 
 
@@ -54,7 +55,9 @@ def publish():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("command", choices=["add-work", "add-collection", "publish"])
+    parser.add_argument(
+        "command", choices=["add-work", "add-collection", "publish", "tui"]
+    )
     args = parser.parse_args()
 
     if args.command == "add-work":
@@ -63,6 +66,8 @@ def main():
         add_collection()
     elif args.command == "publish":
         publish()
+    elif args.command == "tui":
+        tui.run(Session)
 
 
 if __name__ == "__main__":
